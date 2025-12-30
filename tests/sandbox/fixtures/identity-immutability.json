@@ -1,0 +1,32 @@
+{
+  "id": "identity-immutability",
+  "timestamp": "2024-01-01T00:00:00.000Z",
+  "description": "Validates that identity state is not mutated by prepareContext",
+  "setup": {
+    "identity": {
+      "name": "TestIdentity",
+      "values": [
+        { "name": "accuracy", "description": "Prioritize correctness", "priority": 1 }
+      ],
+      "invariants": [
+        { "description": "Never lie", "rule": "no-deception", "rationale": "Trust is fundamental" }
+      ],
+      "styleConstraints": [
+        { "aspect": "tone", "constraint": "professional" }
+      ],
+      "riskPosture": "conservative"
+    },
+    "memories": [],
+    "failures": []
+  },
+  "input": {
+    "identityId": "IDENTITY_ID_PLACEHOLDER",
+    "query": "What is the capital of France?"
+  },
+  "expectedBehavior": {
+    "success": true,
+    "blocked": false,
+    "identityUnchanged": true
+  }
+}
+

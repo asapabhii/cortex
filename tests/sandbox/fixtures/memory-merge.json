@@ -1,0 +1,42 @@
+{
+  "id": "memory-merge",
+  "timestamp": "2024-01-01T00:00:00.000Z",
+  "description": "Validates correct memory count after pre-population",
+  "setup": {
+    "identity": {
+      "name": "MergeTestIdentity",
+      "values": [],
+      "invariants": [],
+      "styleConstraints": [],
+      "riskPosture": "moderate"
+    },
+    "memories": [
+      {
+        "type": "preference",
+        "content": "User prefers dark mode",
+        "confidence": 0.7,
+        "tags": ["ui"]
+      },
+      {
+        "type": "preference",
+        "content": "User prefers verbose output",
+        "confidence": 0.6,
+        "tags": ["output"]
+      }
+    ],
+    "failures": []
+  },
+  "input": {
+    "identityId": "IDENTITY_ID_PLACEHOLDER",
+    "query": "What are the user preferences?",
+    "memoryOptions": {
+      "similarityThreshold": 0
+    }
+  },
+  "expectedBehavior": {
+    "success": true,
+    "blocked": false,
+    "retrievedMemoryCount": 2
+  }
+}
+

@@ -1,0 +1,40 @@
+{
+  "id": "engine-hard-block-shortcircuit",
+  "timestamp": "2024-01-01T00:00:00.000Z",
+  "description": "Validates that hard blocks short-circuit the pipeline (no memory retrieval)",
+  "setup": {
+    "identity": {
+      "name": "ShortCircuitTestIdentity",
+      "values": [],
+      "invariants": [],
+      "styleConstraints": [],
+      "riskPosture": "conservative"
+    },
+    "memories": [
+      {
+        "type": "lesson",
+        "content": "This memory should not be retrieved",
+        "confidence": 0.9,
+        "tags": []
+      }
+    ],
+    "failures": [
+      {
+        "pattern": "blocked query",
+        "context": "test",
+        "severity": "hard",
+        "reason": "Test block"
+      }
+    ]
+  },
+  "input": {
+    "identityId": "IDENTITY_ID_PLACEHOLDER",
+    "query": "blocked query"
+  },
+  "expectedBehavior": {
+    "success": false,
+    "blocked": true,
+    "retrievedMemoryCount": 0
+  }
+}
+

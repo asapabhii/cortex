@@ -1,0 +1,44 @@
+{
+  "id": "memory-decay",
+  "timestamp": "2024-01-01T00:00:00.000Z",
+  "description": "Validates that memories with low confidence are excluded from retrieval",
+  "setup": {
+    "identity": {
+      "name": "DecayTestIdentity",
+      "values": [],
+      "invariants": [],
+      "styleConstraints": [],
+      "riskPosture": "moderate"
+    },
+    "memories": [
+      {
+        "type": "lesson",
+        "content": "Outdated legacy pattern deprecated",
+        "confidence": 0.1,
+        "tags": ["weak"]
+      },
+      {
+        "type": "lesson",
+        "content": "Always validate user input before processing",
+        "confidence": 0.9,
+        "tags": ["strong"]
+      }
+    ],
+    "failures": []
+  },
+  "input": {
+    "identityId": "IDENTITY_ID_PLACEHOLDER",
+    "query": "What do I know?",
+    "memoryOptions": {
+      "minConfidence": 0.5,
+      "similarityThreshold": 0
+    }
+  },
+  "expectedBehavior": {
+    "success": true,
+    "blocked": false,
+    "retrievedMemoryCount": 1,
+    "excludesWeakMemory": true
+  }
+}
+

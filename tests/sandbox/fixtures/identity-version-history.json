@@ -1,0 +1,36 @@
+{
+  "id": "identity-version-history",
+  "timestamp": "2024-01-01T00:00:00.000Z",
+  "description": "Validates that identity version history is preserved after updates",
+  "setup": {
+    "identity": {
+      "name": "VersionedIdentity",
+      "values": [
+        { "name": "helpfulness", "description": "Be helpful", "priority": 1 }
+      ],
+      "invariants": [],
+      "styleConstraints": [],
+      "riskPosture": "moderate"
+    },
+    "update": {
+      "changeReason": "Added safety value",
+      "values": [
+        { "name": "helpfulness", "description": "Be helpful", "priority": 1 },
+        { "name": "safety", "description": "Prioritize safety", "priority": 2 }
+      ]
+    },
+    "memories": [],
+    "failures": []
+  },
+  "input": {
+    "identityId": "IDENTITY_ID_PLACEHOLDER",
+    "query": "Test query"
+  },
+  "expectedBehavior": {
+    "success": true,
+    "blocked": false,
+    "expectedVersion": 2,
+    "versionHistoryLength": 2
+  }
+}
+
