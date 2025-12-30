@@ -5,6 +5,12 @@
  */
 
 export {
+  SQLiteDistilledStorage,
+  SQLiteFailureStorage,
+  SQLiteIdentityStorage,
+} from './sqlite.js';
+
+export {
   DEFAULT_STORAGE_CONFIG,
   DistilledMemoryStorage,
   FailureMemoryStorage,
