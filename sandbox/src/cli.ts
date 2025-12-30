@@ -9,8 +9,10 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 
+import { compareOutputs } from './comparator.js';
+import { createRecordedRun, loadRun, saveRun } from './recorder.js';
 import { SandboxRunner } from './runner.js';
-import { SandboxInputSpec, validateInputSpec } from './types.js';
+import { ReplayResult, SandboxInputSpec, validateInputSpec } from './types.js';
 
 /**
  * Print usage information
@@ -20,12 +22,17 @@ function printUsage(): void {
 Usage: cortex-sandbox <command> [options]
 
 Commands:
-  run <input-file>    Execute a sandbox run with the given input specification
+  run <input-file>                      Execute a sandbox run
+  record <input-file> --output <file>   Execute and save run for replay
+  replay <run-file>                     Replay a recorded run and validate determinism
 
 Options:
-  --help              Show this help message
+  --help                                Show this help message
+  --output <file>                       Output file for record command
 
-Input file must be a JSON file containing a SandboxInputSpec object.
+Exit codes:
+  0  Success (or deterministic replay)
+  1  Error or non-deterministic replay
 `);
 }
 
@@ -86,6 +93,75 @@ async function executeRun(inputFile: string): Promise<void> {
 }
 
 /**
+ * Execute and record a sandbox run
+ */
+async function executeRecord(inputFile: string, outputFile: string): Promise<void> {
+  const input = readInputFile(inputFile);
+
+  const runner = new SandboxRunner();
+  const output = await runner.run(input);
+
+  if (!output.success) {
+    process.stderr.write(`Error: Run failed: ${output.error}\n`);
+    process.exit(1);
+  }
+
+  const run = createRecordedRun(output);
+  saveRun(run, outputFile);
+
+  process.stdout.write(JSON.stringify({ recorded: true, runId: run.id }, null, 2));
+  process.stdout.write('\n');
+}
+
+/**
+ * Replay a recorded run and validate determinism
+ */
+async function executeReplay(runFile: string): Promise<void> {
+  let recordedRun;
+  try {
+    recordedRun = loadRun(runFile);
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    process.stderr.write(`Error: ${message}\n`);
+    process.exit(1);
+  }
+
+  const runner = new SandboxRunner();
+  const replayOutput = await runner.run(recordedRun.input);
+
+  const comparison = compareOutputs(recordedRun.output, replayOutput);
+
+  const result: ReplayResult = {
+    comparison,
+    recordedRun,
+    replayOutput,
+  };
+
+  process.stdout.write(JSON.stringify({
+    comparison: result.comparison,
+    deterministic: comparison.identical,
+    originalRunId: recordedRun.id,
+    originalTimestamp: recordedRun.timestamp,
+  }, null, 2));
+  process.stdout.write('\n');
+
+  if (!comparison.identical) {
+    process.exit(1);
+  }
+}
+
+/**
+ * Parse --output argument
+ */
+function parseOutputArg(args: string[]): string | null {
+  const outputIndex = args.indexOf('--output');
+  if (outputIndex === -1 || outputIndex + 1 >= args.length) {
+    return null;
+  }
+  return args[outputIndex + 1];
+}
+
+/**
  * Main entry point
  */
 async function main(): Promise<void> {
@@ -104,9 +180,27 @@ async function main(): Promise<void> {
       printUsage();
       process.exit(1);
     }
-
-    const inputFile = args[1];
-    await executeRun(inputFile);
+    await executeRun(args[1]);
+  } else if (command === 'record') {
+    if (args.length < 2) {
+      process.stderr.write('Error: Missing input file argument\n');
+      printUsage();
+      process.exit(1);
+    }
+    const outputFile = parseOutputArg(args);
+    if (outputFile === null) {
+      process.stderr.write('Error: Missing --output argument\n');
+      printUsage();
+      process.exit(1);
+    }
+    await executeRecord(args[1], outputFile);
+  } else if (command === 'replay') {
+    if (args.length < 2) {
+      process.stderr.write('Error: Missing run file argument\n');
+      printUsage();
+      process.exit(1);
+    }
+    await executeReplay(args[1]);
   } else {
     process.stderr.write(`Error: Unknown command: ${command}\n`);
     printUsage();

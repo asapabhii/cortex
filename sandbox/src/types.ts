@@ -120,6 +120,32 @@ export interface ValidationResult {
 }
 
 /**
+ * A single difference found during comparison
+ */
+export interface Difference {
+  path: string;
+  expected: unknown;
+  actual: unknown;
+}
+
+/**
+ * Result of comparing two sandbox outputs
+ */
+export interface ComparisonResult {
+  identical: boolean;
+  differences: Difference[];
+}
+
+/**
+ * Result of replaying a recorded run
+ */
+export interface ReplayResult {
+  recordedRun: RecordedRun;
+  replayOutput: SandboxOutput;
+  comparison: ComparisonResult;
+}
+
+/**
  * Validate a sandbox input specification
  */
 export function validateInputSpec(input: unknown): ValidationResult {

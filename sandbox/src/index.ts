@@ -5,11 +5,14 @@
  */
 
 export {
+  ComparisonResult,
   DecisionDetails,
+  Difference,
   FailureSnapshot,
   IdentitySnapshot,
   MemorySnapshot,
   RecordedRun,
+  ReplayResult,
   SandboxInputSpec,
   SandboxOutput,
   StateSnapshot,
@@ -25,3 +28,11 @@ export {
 } from './snapshot.js';
 
 export { SandboxRunner } from './runner.js';
+
+export { compareOutputs } from './comparator.js';
+
+export {
+  createRecordedRun,
+  loadRun,
+  saveRun,
+} from './recorder.js';
