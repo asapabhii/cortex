@@ -63,10 +63,16 @@ export interface SimilarityConfig {
 }
 
 /**
- * Simple exact-match similarity provider for testing
+ * Deterministic word-overlap similarity provider
  *
- * This is NOT for production use - it only matches identical strings.
- * Use a real embedding-based provider in production.
+ * A baseline provider that computes similarity using word overlap (Dice coefficient).
+ * Suitable for production use cases where:
+ * - Deterministic, reproducible results are required
+ * - Embedding services are unavailable or unnecessary
+ * - Simple lexical matching is sufficient
+ *
+ * For semantic similarity (understanding meaning beyond exact words),
+ * use an embedding-based provider as an optional adapter.
  */
 export class ExactMatchSimilarityProvider implements SimilarityProvider {
   computeSimilarity(textA: string, textB: string): Promise<number> {

@@ -12,3 +12,6 @@ export * from './identity/index.js';
 
 // Interfaces
 export * from './interfaces/index.js';
+
+// Distilled Memory
+export * from './memory/distilled/index.js';
