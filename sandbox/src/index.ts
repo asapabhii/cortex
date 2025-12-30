@@ -17,3 +17,11 @@ export {
   ValidationResult,
 } from './types.js';
 
+export {
+  captureFailureSnapshots,
+  captureIdentitySnapshot,
+  captureMemorySnapshots,
+  captureStateSnapshot,
+} from './snapshot.js';
+
+export { SandboxRunner } from './runner.js';

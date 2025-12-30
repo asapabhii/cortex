@@ -9,6 +9,7 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 
+import { SandboxRunner } from './runner.js';
 import { SandboxInputSpec, validateInputSpec } from './types.js';
 
 /**
@@ -42,7 +43,7 @@ function readInputFile(filePath: string): SandboxInputSpec {
   let content: string;
   try {
     content = fs.readFileSync(absolutePath, 'utf-8');
-  } catch (err) {
+  } catch {
     process.stderr.write(`Error: Failed to read file: ${absolutePath}\n`);
     process.exit(1);
   }
@@ -50,7 +51,7 @@ function readInputFile(filePath: string): SandboxInputSpec {
   let parsed: unknown;
   try {
     parsed = JSON.parse(content);
-  } catch (err) {
+  } catch {
     process.stderr.write(`Error: Invalid JSON in file: ${absolutePath}\n`);
     process.exit(1);
   }
@@ -68,9 +69,26 @@ function readInputFile(filePath: string): SandboxInputSpec {
 }
 
 /**
+ * Execute a sandbox run
+ */
+async function executeRun(inputFile: string): Promise<void> {
+  const input = readInputFile(inputFile);
+
+  const runner = new SandboxRunner();
+  const output = await runner.run(input);
+
+  process.stdout.write(JSON.stringify(output, null, 2));
+  process.stdout.write('\n');
+
+  if (!output.success) {
+    process.exit(1);
+  }
+}
+
+/**
  * Main entry point
  */
-function main(): void {
+async function main(): Promise<void> {
   const args = process.argv.slice(2);
 
   if (args.length === 0 || args.includes('--help')) {
@@ -88,15 +106,7 @@ function main(): void {
     }
 
     const inputFile = args[1];
-    const input = readInputFile(inputFile);
-
-    // For now, echo the parsed input
-    process.stdout.write('Parsed input specification:\n');
-    process.stdout.write(JSON.stringify(input, null, 2));
-    process.stdout.write('\n');
-
-    // Cortex invocation will be added in Commit 2
-    process.stdout.write('\n[Sandbox runner not yet implemented]\n');
+    await executeRun(inputFile);
   } else {
     process.stderr.write(`Error: Unknown command: ${command}\n`);
     printUsage();
@@ -104,5 +114,8 @@ function main(): void {
   }
 }
 
-main();
-
+main().catch((err: unknown) => {
+  const message = err instanceof Error ? err.message : String(err);
+  process.stderr.write(`Error: ${message}\n`);
+  process.exit(1);
+});
