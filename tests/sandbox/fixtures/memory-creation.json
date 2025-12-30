@@ -1,0 +1,26 @@
+{
+  "id": "memory-creation",
+  "timestamp": "2024-01-01T00:00:00.000Z",
+  "description": "Validates that prepareContext with no memories returns empty memory context",
+  "setup": {
+    "identity": {
+      "name": "MemoryTestIdentity",
+      "values": [],
+      "invariants": [],
+      "styleConstraints": [],
+      "riskPosture": "moderate"
+    },
+    "memories": [],
+    "failures": []
+  },
+  "input": {
+    "identityId": "IDENTITY_ID_PLACEHOLDER",
+    "query": "What should I remember?"
+  },
+  "expectedBehavior": {
+    "success": true,
+    "blocked": false,
+    "retrievedMemoryCount": 0
+  }
+}
+

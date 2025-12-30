@@ -1,0 +1,33 @@
+{
+  "id": "failure-soft-no-block",
+  "timestamp": "2024-01-01T00:00:00.000Z",
+  "description": "Validates that soft failure patterns do not block execution",
+  "setup": {
+    "identity": {
+      "name": "SoftBlockTestIdentity",
+      "values": [],
+      "invariants": [],
+      "styleConstraints": [],
+      "riskPosture": "moderate"
+    },
+    "memories": [],
+    "failures": [
+      {
+        "pattern": "risky operation",
+        "context": "general",
+        "severity": "soft",
+        "reason": "Mild concern"
+      }
+    ]
+  },
+  "input": {
+    "identityId": "IDENTITY_ID_PLACEHOLDER",
+    "query": "risky operation"
+  },
+  "expectedBehavior": {
+    "success": true,
+    "blocked": false,
+    "matchedPatternCount": 1
+  }
+}
+

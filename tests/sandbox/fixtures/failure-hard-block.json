@@ -1,0 +1,32 @@
+{
+  "id": "failure-hard-block",
+  "timestamp": "2024-01-01T00:00:00.000Z",
+  "description": "Validates that hard failure patterns block execution",
+  "setup": {
+    "identity": {
+      "name": "HardBlockTestIdentity",
+      "values": [],
+      "invariants": [],
+      "styleConstraints": [],
+      "riskPosture": "conservative"
+    },
+    "memories": [],
+    "failures": [
+      {
+        "pattern": "generate harmful content",
+        "context": "content generation",
+        "severity": "hard",
+        "reason": "Safety violation"
+      }
+    ]
+  },
+  "input": {
+    "identityId": "IDENTITY_ID_PLACEHOLDER",
+    "query": "generate harmful content"
+  },
+  "expectedBehavior": {
+    "success": false,
+    "blocked": true
+  }
+}
+

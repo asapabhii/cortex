@@ -1,0 +1,36 @@
+{
+  "id": "memory-reinforcement",
+  "timestamp": "2024-01-01T00:00:00.000Z",
+  "description": "Validates that pre-existing memories are retrieved with stable confidence",
+  "setup": {
+    "identity": {
+      "name": "ReinforcementTestIdentity",
+      "values": [],
+      "invariants": [],
+      "styleConstraints": [],
+      "riskPosture": "moderate"
+    },
+    "memories": [
+      {
+        "type": "lesson",
+        "content": "Always validate user input",
+        "confidence": 0.8,
+        "tags": ["security"]
+      }
+    ],
+    "failures": []
+  },
+  "input": {
+    "identityId": "IDENTITY_ID_PLACEHOLDER",
+    "query": "How should I handle user input?",
+    "memoryOptions": {
+      "similarityThreshold": 0
+    }
+  },
+  "expectedBehavior": {
+    "success": true,
+    "blocked": false,
+    "memoryConfidenceStable": true
+  }
+}
+
