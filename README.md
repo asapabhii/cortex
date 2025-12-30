@@ -1,59 +1,65 @@
 # Cortex
 
-**Cognitive Infrastructure Layer for AI Systems**
+Cognitive infrastructure layer for AI systems.
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
----
+## What It Does
 
-## What This Is
+Cortex sits between your application and the LLM. It provides three capabilities:
 
-Cortex is a **model-agnostic infrastructure layer** that provides:
+**Identity** — A versioned, immutable configuration that defines values, invariants, and constraints. Cannot be modified by runtime prompts. All changes are audited.
 
-1. **Persistent Identity** — A versioned, immutable identity core that remains stable across sessions and cannot be overwritten by runtime prompts.
+**Memory** — Stores distilled meaning, not conversation logs. Memories carry confidence scores, reinforce on repetition, and decay when stale. Similar memories merge.
 
-2. **Meaning-Based Memory** — Long-term memory that stores distilled lessons, not raw conversations. Memories have confidence scores, decay over time, and merge when similar.
+**Failure Prevention** — Records failure patterns with severity levels. Hard failures block requests before they reach the LLM. Soft failures bias against known bad patterns.
 
-3. **Failure Memory** — A negative capability system that prevents repeated mistakes by storing failures more strongly than successes and blocking known bad patterns before they reach the LLM.
+## What It Does Not Do
 
----
+- Does not generate prompts or call LLMs
+- Does not store raw conversations
+- Does not implement autonomous learning
+- Does not provide a user interface
+- Does not claim consciousness or personality
 
-## What This Is NOT
+Cortex prepares structured context. The consumer decides how to use it.
 
-- ❌ **Not an AI model** — Cortex works *with* any LLM, not as a replacement
-- ❌ **Not a chatbot** — No conversation UI, no chat interface
-- ❌ **Not about consciousness** — No claims of sentience, emotions, or human-like qualities
-- ❌ **Not a fine-tuning system** — No model training or weight modification
-- ❌ **Not a personality layer** — Identity is about values and constraints, not character traits
+## Design Principles
 
----
+**Memory stores meaning.** Raw logs are not memory. Lessons are.
 
-## Why This Exists
+**Identity is immutable at runtime.** Changes require explicit API calls with documented reasons.
 
-Current AI systems have three fundamental limitations:
+**Failures matter more than successes.** Asymmetric storage. Hard blocks are deterministic.
 
-1. **No persistent identity** — Each session starts fresh, identity is defined entirely by prompts that can be manipulated or overwritten.
+**Everything is auditable.** Version history on identity. Provenance on memories.
 
-2. **No semantic memory** — Systems either remember nothing or store raw conversation logs. Neither approach captures *meaning*.
+**No vendor lock-in.** Abstract storage interfaces. SQLite ships by default.
 
-3. **No failure learning** — Systems repeat the same mistakes because they have no mechanism to learn from failures across sessions.
+## Architecture
 
-Cortex solves these problems at the infrastructure level, making any LLM-based system more reliable, consistent, and capable of genuine improvement over time.
+```
+Consumer
+    |
+    v
++---------------------------+
+|     Cortex Engine         |
+|  +--------+ +----------+  |
+|  |Identity| | Memory   |  |
+|  +--------+ +----------+  |
+|  +---------------------+  |
+|  |   Failure Memory    |  |
+|  +---------------------+  |
++------------+--------------+
+             |
+      +------v------+
+      |   Storage   |
+      +-------------+
+```
 
----
+The engine orchestrates identity loading, failure checking, and memory retrieval. Returns structured data. Does not format prompts.
 
-## Core Principles
-
-| Principle | Implementation |
-|-----------|----------------|
-| Memory stores **meaning**, not conversations | Distillation layer extracts lessons from interactions |
-| Identity is **immutable at runtime** | Versioned schema, controlled update API only |
-| Failures are **more important** than successes | Asymmetric storage with hard blocking capabilities |
-| Everything is **auditable** | Full provenance tracking on all memory operations |
-| **No vendor lock-in** | SQLite default, abstract interfaces for all storage |
-| **Boring, reliable engineering** | No clever tricks, no magic, just solid infrastructure |
-
----
+See [docs/architecture.md](./docs/architecture.md) for details.
 
 ## Installation
 
@@ -63,117 +69,62 @@ npm install cortex
 
 Requires Node.js 18+.
 
----
-
-## Quick Start
+## Usage
 
 ```typescript
 import { Cortex } from 'cortex';
 
-// Initialize with default SQLite storage
-const cortex = new Cortex();
+// In-memory storage (default)
+const cortex = Cortex.create();
 
-// Load or create an identity
-const identity = await cortex.identity.load('agent-001');
+// SQLite persistent storage
+const cortex = await Cortex.createWithSQLite();
 
-// Before any LLM call, get context injection
-const context = await cortex.prepareContext({
-  identity,
-  query: 'user input here',
+// Prepare context before LLM call
+const result = await cortex.prepareContext({
+  identityId: 'agent-001',
+  query: 'user input',
 });
 
-// context.identityPrompt — inject into system prompt
-// context.relevantMemories — inject as context
-// context.blockedPatterns — patterns to avoid
+if (!result.success) {
+  // Request blocked or error
+}
 
-// After LLM response, record outcomes
-await cortex.memory.record({
-  type: 'lesson',
-  content: 'Extracted insight from this interaction',
-  confidence: 0.8,
-});
-
-// Record failures for future prevention
-await cortex.failure.record({
-  pattern: 'specific error pattern',
-  context: 'when this happened',
-  severity: 'hard', // 'hard' = block, 'soft' = bias against
-});
+// result.context contains:
+// - identityContext
+// - memoryContext
+// - failureContext
 ```
-
----
-
-## Architecture
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                         Cortex Engine                        │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐  │
-│  │  Identity   │  │   Memory    │  │   Failure Memory    │  │
-│  │    Core     │  │  (Distilled)│  │  (Negative Cap.)    │  │
-│  └──────┬──────┘  └──────┬──────┘  └──────────┬──────────┘  │
-│         │                │                     │             │
-│         └────────────────┼─────────────────────┘             │
-│                          │                                   │
-│                   ┌──────▼──────┐                           │
-│                   │   Storage   │                           │
-│                   │  Interface  │                           │
-│                   └──────┬──────┘                           │
-└──────────────────────────┼──────────────────────────────────┘
-                           │
-              ┌────────────┼────────────┐
-              │            │            │
-        ┌─────▼─────┐ ┌────▼────┐ ┌─────▼─────┐
-        │  SQLite   │ │ Postgres│ │  Custom   │
-        │ (default) │ │  (opt)  │ │ (extend)  │
-        └───────────┘ └─────────┘ └───────────┘
-```
-
----
 
 ## Project Structure
 
 ```
-/src
-  /identity      # Immutable identity core
-  /memory
-    /distilled   # Meaning-based long-term memory
-    /failure     # Failure patterns and blocking
-  /storage       # Storage adapters (SQLite, etc.)
-  /interfaces    # Abstract interfaces for extensibility
-  /engine        # Central orchestration
-  /utils         # Shared utilities
-/tests           # Test suites
-/docs            # Architecture documentation
+src/
+  identity/     Identity core
+  memory/
+    distilled/  Meaning-based memory
+    failure/    Failure patterns
+  engine/       Orchestration
+  storage/      Storage adapters
+  interfaces/   Abstractions
 ```
-
----
 
 ## V1 Scope
 
-This is V1. It includes:
+Included:
+- Identity with versioning
+- Distilled memory with decay
+- Failure memory with blocking
+- Context preparation engine
+- In-memory and SQLite storage
 
-- ✅ Identity Core (versioned, immutable)
-- ✅ Distilled Memory (lessons, preferences, warnings)
-- ✅ Failure Memory (pattern blocking, context blocking)
-- ✅ SQLite storage (local, free)
-- ✅ Engine for context preparation
-
-It does NOT include:
-
-- ❌ Goal arbitration
-- ❌ Self-reflection loops
-- ❌ UI of any kind
-- ❌ Model training/fine-tuning
-
----
+Not included:
+- Goal arbitration
+- Reflection loops
+- Embedding providers
+- REST API
+- PostgreSQL adapter
 
 ## License
 
-Apache 2.0 — See [LICENSE](./LICENSE)
-
----
-
-## Contributing
-
-This project follows strict commit discipline. See [CONTRIBUTING.md](./docs/CONTRIBUTING.md) for guidelines.
+Apache 2.0
