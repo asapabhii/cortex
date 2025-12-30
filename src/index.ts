@@ -15,3 +15,6 @@ export * from './interfaces/index.js';
 
 // Distilled Memory
 export * from './memory/distilled/index.js';
+
+// Failure Memory
+export * from './memory/failure/index.js';
