@@ -47,36 +47,39 @@ export class InMemoryIdentityStorage implements IdentityStorage {
   private identities: Map<string, Identity> = new Map();
   private versions: Map<string, IdentityVersion[]> = new Map();
 
-  async delete(id: string): Promise<void> {
+  delete(id: string): Promise<void> {
     this.identities.delete(id);
     this.versions.delete(id);
+    return Promise.resolve();
   }
 
-  async getVersion(identityId: string, version: number): Promise<IdentityVersion | null> {
+  getVersion(identityId: string, version: number): Promise<IdentityVersion | null> {
     const versions = this.versions.get(identityId) ?? [];
-    return versions.find((v) => v.version === version) ?? null;
+    return Promise.resolve(versions.find((v) => v.version === version) ?? null);
   }
 
-  async getVersions(identityId: string): Promise<IdentityVersion[]> {
-    return this.versions.get(identityId) ?? [];
+  getVersions(identityId: string): Promise<IdentityVersion[]> {
+    return Promise.resolve(this.versions.get(identityId) ?? []);
   }
 
-  async listIds(): Promise<string[]> {
-    return Array.from(this.identities.keys());
+  listIds(): Promise<string[]> {
+    return Promise.resolve(Array.from(this.identities.keys()));
   }
 
-  async load(id: string): Promise<Identity | null> {
-    return this.identities.get(id) ?? null;
+  load(id: string): Promise<Identity | null> {
+    return Promise.resolve(this.identities.get(id) ?? null);
   }
 
-  async save(identity: Identity): Promise<void> {
+  save(identity: Identity): Promise<void> {
     this.identities.set(identity.id, identity);
+    return Promise.resolve();
   }
 
-  async saveVersion(version: IdentityVersion): Promise<void> {
+  saveVersion(version: IdentityVersion): Promise<void> {
     const versions = this.versions.get(version.identityId) ?? [];
     versions.push(version);
     this.versions.set(version.identityId, versions);
+    return Promise.resolve();
   }
 }
 
