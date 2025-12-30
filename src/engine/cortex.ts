@@ -11,6 +11,7 @@ import { FailureMemoryService, InMemoryFailureStorage } from '../memory/failure/
 import { FailureMemoryConfig } from '../memory/failure/types.js';
 import { IdentityService, InMemoryIdentityStorage } from '../identity/identity.service.js';
 import { ExactMatchSimilarityProvider, SimilarityProvider } from '../interfaces/similarity.js';
+import { SQLiteDistilledStorage, SQLiteFailureStorage, SQLiteIdentityStorage } from '../storage/sqlite.js';
 import { CortexEngine } from './engine.service.js';
 import { CortexEngineConfig, PrepareContextInput, PrepareContextResult } from './types.js';
 
@@ -85,6 +86,50 @@ export class Cortex {
     const identityStorage = new InMemoryIdentityStorage();
     const memoryStorage = new InMemoryDistilledStorage();
     const failureStorage = new InMemoryFailureStorage();
+
+    // Create services
+    const identityService = new IdentityService(identityStorage);
+    const memoryService = new DistilledMemoryService(
+      memoryStorage,
+      similarityProvider,
+      options?.memory
+    );
+    const failureService = new FailureMemoryService(
+      failureStorage,
+      similarityProvider,
+      options?.failure
+    );
+
+    // Create engine
+    const engine = new CortexEngine(
+      identityService,
+      memoryService,
+      failureService,
+      options?.engine
+    );
+
+    return new Cortex(identityService, memoryService, failureService, engine);
+  }
+
+  /**
+   * Create a Cortex instance with SQLite persistent storage
+   *
+   * Async factory that initializes SQLite storage for all modules.
+   * Data persists across process restarts when using a file path.
+   */
+  static async createWithSQLite(options?: CortexOptions): Promise<Cortex> {
+    // Create similarity provider
+    const similarityProvider = options?.similarityProvider
+      ?? new ExactMatchSimilarityProvider();
+
+    // Create and initialize SQLite storage backends
+    const identityStorage = new SQLiteIdentityStorage();
+    const memoryStorage = new SQLiteDistilledStorage();
+    const failureStorage = new SQLiteFailureStorage();
+
+    await identityStorage.initialize();
+    await memoryStorage.initialize();
+    await failureStorage.initialize();
 
     // Create services
     const identityService = new IdentityService(identityStorage);

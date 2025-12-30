@@ -21,3 +21,6 @@ export * from './memory/failure/index.js';
 
 // Engine
 export * from './engine/index.js';
+
+// Storage
+export * from './storage/index.js';
