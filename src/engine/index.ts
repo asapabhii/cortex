@@ -4,6 +4,8 @@
  * Central orchestration for Cortex.
  */
 
+export { Cortex, CortexOptions } from './cortex.js';
+
 export { CortexEngine } from './engine.service.js';
 
 export {
