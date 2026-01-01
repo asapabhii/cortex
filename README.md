@@ -42,7 +42,3 @@ const result = await cortex.prepareContext({
 Included: identity, distilled memory, failure memory, engine, in-memory and SQLite storage.
 
 Not included: goal arbitration, reflection loops, embedding providers, REST API.
-
-## License
-
-Apache 2.0
