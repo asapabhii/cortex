@@ -1,0 +1,108 @@
+{
+  "id": "19345a0e-8abc-4f8b-b95b-a491105989cd",
+  "input": {
+    "query": "risky operation",
+    "identityId": "68d1c479-52bb-436c-a3b3-c147f010bfd3"
+  },
+  "output": {
+    "decision": {
+      "blocked": false,
+      "matchedPatternCount": 1,
+      "retrievedMemoryCount": 0
+    },
+    "durationMs": 1,
+    "input": {
+      "query": "risky operation",
+      "identityId": "68d1c479-52bb-436c-a3b3-c147f010bfd3"
+    },
+    "stateAfter": {
+      "failures": [
+        {
+          "active": true,
+          "context": "general",
+          "createdAt": "2026-01-05T11:47:13.763Z",
+          "id": "cfccfabb-4edf-4142-a2aa-b5ef6d57a59b",
+          "lastOccurredAt": "2026-01-05T11:47:13.763Z",
+          "occurrenceCount": 1,
+          "pattern": "risky operation",
+          "reason": "Mild concern",
+          "severity": "soft",
+          "tags": []
+        }
+      ],
+      "identity": {
+        "createdAt": "2026-01-05T11:47:13.763Z",
+        "id": "68d1c479-52bb-436c-a3b3-c147f010bfd3",
+        "invariants": [],
+        "name": "SoftPatternExample",
+        "riskPosture": "moderate",
+        "styleConstraints": [],
+        "updatedAt": "2026-01-05T11:47:13.763Z",
+        "values": [],
+        "version": 1
+      },
+      "memories": [],
+      "timestamp": "2026-01-05T11:47:13.764Z"
+    },
+    "stateBefore": {
+      "failures": [
+        {
+          "active": true,
+          "context": "general",
+          "createdAt": "2026-01-05T11:47:13.763Z",
+          "id": "cfccfabb-4edf-4142-a2aa-b5ef6d57a59b",
+          "lastOccurredAt": "2026-01-05T11:47:13.763Z",
+          "occurrenceCount": 1,
+          "pattern": "risky operation",
+          "reason": "Mild concern",
+          "severity": "soft",
+          "tags": []
+        }
+      ],
+      "identity": {
+        "createdAt": "2026-01-05T11:47:13.763Z",
+        "id": "68d1c479-52bb-436c-a3b3-c147f010bfd3",
+        "invariants": [],
+        "name": "SoftPatternExample",
+        "riskPosture": "moderate",
+        "styleConstraints": [],
+        "updatedAt": "2026-01-05T11:47:13.763Z",
+        "values": [],
+        "version": 1
+      },
+      "memories": [],
+      "timestamp": "2026-01-05T11:47:13.763Z"
+    },
+    "success": true
+  },
+  "stateBefore": {
+    "failures": [
+      {
+        "active": true,
+        "context": "general",
+        "createdAt": "2026-01-05T11:47:13.763Z",
+        "id": "cfccfabb-4edf-4142-a2aa-b5ef6d57a59b",
+        "lastOccurredAt": "2026-01-05T11:47:13.763Z",
+        "occurrenceCount": 1,
+        "pattern": "risky operation",
+        "reason": "Mild concern",
+        "severity": "soft",
+        "tags": []
+      }
+    ],
+    "identity": {
+      "createdAt": "2026-01-05T11:47:13.763Z",
+      "id": "68d1c479-52bb-436c-a3b3-c147f010bfd3",
+      "invariants": [],
+      "name": "SoftPatternExample",
+      "riskPosture": "moderate",
+      "styleConstraints": [],
+      "updatedAt": "2026-01-05T11:47:13.763Z",
+      "values": [],
+      "version": 1
+    },
+    "memories": [],
+    "timestamp": "2026-01-05T11:47:13.763Z"
+  },
+  "timestamp": "2026-01-05T11:47:13.764Z"
+}

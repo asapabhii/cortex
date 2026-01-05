@@ -1,0 +1,108 @@
+{
+  "id": "b6e1cfef-de7d-49a1-9bc3-db997919f4da",
+  "input": {
+    "query": "Test query",
+    "identityId": "1c73755e-b8ac-45b9-bcaa-96b718a245d8"
+  },
+  "output": {
+    "decision": {
+      "blocked": false,
+      "matchedPatternCount": 0,
+      "retrievedMemoryCount": 0
+    },
+    "durationMs": 0,
+    "input": {
+      "query": "Test query",
+      "identityId": "1c73755e-b8ac-45b9-bcaa-96b718a245d8"
+    },
+    "stateAfter": {
+      "failures": [],
+      "identity": {
+        "createdAt": "2026-01-05T11:47:13.756Z",
+        "id": "1c73755e-b8ac-45b9-bcaa-96b718a245d8",
+        "invariants": [],
+        "name": "VersioningExample",
+        "riskPosture": "moderate",
+        "styleConstraints": [],
+        "updatedAt": "2026-01-05T11:47:13.756Z",
+        "values": [
+          {
+            "description": "Prioritize safety",
+            "id": "c2064d7c-c459-445c-819e-904970db22b8",
+            "name": "safety",
+            "priority": 2
+          },
+          {
+            "description": "Be helpful",
+            "id": "26394800-5c1f-488f-abe3-1fac1eff40c9",
+            "name": "helpfulness",
+            "priority": 1
+          }
+        ],
+        "version": 2
+      },
+      "memories": [],
+      "timestamp": "2026-01-05T11:47:13.756Z"
+    },
+    "stateBefore": {
+      "failures": [],
+      "identity": {
+        "createdAt": "2026-01-05T11:47:13.756Z",
+        "id": "1c73755e-b8ac-45b9-bcaa-96b718a245d8",
+        "invariants": [],
+        "name": "VersioningExample",
+        "riskPosture": "moderate",
+        "styleConstraints": [],
+        "updatedAt": "2026-01-05T11:47:13.756Z",
+        "values": [
+          {
+            "description": "Be helpful",
+            "id": "26394800-5c1f-488f-abe3-1fac1eff40c9",
+            "name": "helpfulness",
+            "priority": 1
+          },
+          {
+            "description": "Prioritize safety",
+            "id": "c2064d7c-c459-445c-819e-904970db22b8",
+            "name": "safety",
+            "priority": 2
+          }
+        ],
+        "version": 2
+      },
+      "memories": [],
+      "timestamp": "2026-01-05T11:47:13.756Z"
+    },
+    "success": true
+  },
+  "stateBefore": {
+    "failures": [],
+    "identity": {
+      "createdAt": "2026-01-05T11:47:13.756Z",
+      "id": "1c73755e-b8ac-45b9-bcaa-96b718a245d8",
+      "invariants": [],
+      "name": "VersioningExample",
+      "riskPosture": "moderate",
+      "styleConstraints": [],
+      "updatedAt": "2026-01-05T11:47:13.756Z",
+      "values": [
+        {
+          "description": "Be helpful",
+          "id": "26394800-5c1f-488f-abe3-1fac1eff40c9",
+          "name": "helpfulness",
+          "priority": 1
+        },
+        {
+          "description": "Prioritize safety",
+          "id": "c2064d7c-c459-445c-819e-904970db22b8",
+          "name": "safety",
+          "priority": 2
+        }
+      ],
+      "version": 2
+    },
+    "memories": [],
+    "timestamp": "2026-01-05T11:47:13.756Z"
+  },
+  "timestamp": "2026-01-05T11:47:13.756Z"
+}
