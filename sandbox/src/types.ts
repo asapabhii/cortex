@@ -32,20 +32,56 @@ export interface SandboxInputSpec {
 }
 
 /**
+ * Value snapshot for restoration
+ */
+export interface ValueSnapshot {
+  id: string;
+  name: string;
+  description: string;
+  priority: number;
+}
+
+/**
+ * Invariant snapshot for restoration
+ */
+export interface InvariantSnapshot {
+  id: string;
+  description: string;
+  rule: string;
+  rationale: string;
+}
+
+/**
+ * Style constraint snapshot for restoration
+ */
+export interface StyleConstraintSnapshot {
+  id: string;
+  aspect: string;
+  constraint: string;
+}
+
+/**
  * Snapshot of identity state
+ *
+ * Contains full data required for deterministic restoration.
  */
 export interface IdentitySnapshot {
   id: string;
   name: string;
   version: number;
   riskPosture: string;
-  valuesCount: number;
-  invariantsCount: number;
-  styleConstraintsCount: number;
+  description?: string;
+  createdAt: string;
+  updatedAt: string;
+  values: ValueSnapshot[];
+  invariants: InvariantSnapshot[];
+  styleConstraints: StyleConstraintSnapshot[];
 }
 
 /**
  * Snapshot of a single distilled memory
+ *
+ * Contains full data required for deterministic restoration.
  */
 export interface MemorySnapshot {
   id: string;
@@ -54,17 +90,29 @@ export interface MemorySnapshot {
   confidence: number;
   reinforcementCount: number;
   decayFactor: number;
+  createdAt: string;
+  lastReinforcedAt: string;
+  lastDecayAt: string;
+  tags: string[];
+  sourceContext?: string;
 }
 
 /**
  * Snapshot of a single failure pattern
+ *
+ * Contains full data required for deterministic restoration.
  */
 export interface FailureSnapshot {
   id: string;
   pattern: string;
+  context: string;
   severity: string;
+  reason: string;
   occurrenceCount: number;
   active: boolean;
+  createdAt: string;
+  lastOccurredAt: string;
+  tags: string[];
 }
 
 /**

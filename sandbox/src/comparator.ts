@@ -95,9 +95,13 @@ function compareIdentity(
   compareValues('identity.name', expected.name, actual.name, differences);
   compareValues('identity.version', expected.version, actual.version, differences);
   compareValues('identity.riskPosture', expected.riskPosture, actual.riskPosture, differences);
-  compareValues('identity.valuesCount', expected.valuesCount, actual.valuesCount, differences);
-  compareValues('identity.invariantsCount', expected.invariantsCount, actual.invariantsCount, differences);
-  compareValues('identity.styleConstraintsCount', expected.styleConstraintsCount, actual.styleConstraintsCount, differences);
+  compareValues('identity.description', expected.description, actual.description, differences);
+  // createdAt and updatedAt intentionally compared for determinism
+  compareValues('identity.createdAt', expected.createdAt, actual.createdAt, differences);
+  compareValues('identity.updatedAt', expected.updatedAt, actual.updatedAt, differences);
+  compareValues('identity.values', expected.values, actual.values, differences);
+  compareValues('identity.invariants', expected.invariants, actual.invariants, differences);
+  compareValues('identity.styleConstraints', expected.styleConstraints, actual.styleConstraints, differences);
 }
 
 /**
@@ -133,6 +137,11 @@ function compareMemories(
     compareValues(`${memPath}.confidence`, exp.confidence, act.confidence, differences);
     compareValues(`${memPath}.reinforcementCount`, exp.reinforcementCount, act.reinforcementCount, differences);
     compareValues(`${memPath}.decayFactor`, exp.decayFactor, act.decayFactor, differences);
+    compareValues(`${memPath}.createdAt`, exp.createdAt, act.createdAt, differences);
+    compareValues(`${memPath}.lastReinforcedAt`, exp.lastReinforcedAt, act.lastReinforcedAt, differences);
+    compareValues(`${memPath}.lastDecayAt`, exp.lastDecayAt, act.lastDecayAt, differences);
+    compareValues(`${memPath}.tags`, exp.tags, act.tags, differences);
+    compareValues(`${memPath}.sourceContext`, exp.sourceContext, act.sourceContext, differences);
   }
 }
 
@@ -165,9 +174,14 @@ function compareFailures(
 
     compareValues(`${failPath}.id`, exp.id, act.id, differences);
     compareValues(`${failPath}.pattern`, exp.pattern, act.pattern, differences);
+    compareValues(`${failPath}.context`, exp.context, act.context, differences);
     compareValues(`${failPath}.severity`, exp.severity, act.severity, differences);
+    compareValues(`${failPath}.reason`, exp.reason, act.reason, differences);
     compareValues(`${failPath}.occurrenceCount`, exp.occurrenceCount, act.occurrenceCount, differences);
     compareValues(`${failPath}.active`, exp.active, act.active, differences);
+    compareValues(`${failPath}.createdAt`, exp.createdAt, act.createdAt, differences);
+    compareValues(`${failPath}.lastOccurredAt`, exp.lastOccurredAt, act.lastOccurredAt, differences);
+    compareValues(`${failPath}.tags`, exp.tags, act.tags, differences);
   }
 }
 

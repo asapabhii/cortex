@@ -11,6 +11,7 @@ import * as path from 'node:path';
 
 import { compareOutputs } from './comparator.js';
 import { createRecordedRun, loadRun, saveRun } from './recorder.js';
+import { restoreFromSnapshot, RestorationError } from './restore.js';
 import { SandboxRunner } from './runner.js';
 import { ReplayResult, SandboxInputSpec, validateInputSpec } from './types.js';
 
@@ -115,6 +116,9 @@ async function executeRecord(inputFile: string, outputFile: string): Promise<voi
 
 /**
  * Replay a recorded run and validate determinism
+ *
+ * Restores state from stateBefore, then re-executes input.
+ * Fails if state cannot be restored or output differs.
  */
 async function executeReplay(runFile: string): Promise<void> {
   let recordedRun;
@@ -126,7 +130,21 @@ async function executeReplay(runFile: string): Promise<void> {
     process.exit(1);
   }
 
-  const runner = new SandboxRunner();
+  // Restore state from snapshot
+  let cortex;
+  try {
+    const restored = await restoreFromSnapshot(recordedRun.stateBefore);
+    cortex = restored.cortex;
+  } catch (err) {
+    if (err instanceof RestorationError) {
+      process.stderr.write(`Error: Cannot restore state for deterministic replay: ${err.message}\n`);
+      process.exit(1);
+    }
+    throw err;
+  }
+
+  // Run with restored state
+  const runner = new SandboxRunner(cortex);
   const replayOutput = await runner.run(recordedRun.input);
 
   const comparison = compareOutputs(recordedRun.output, replayOutput);
