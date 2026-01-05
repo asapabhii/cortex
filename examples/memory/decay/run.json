@@ -1,0 +1,164 @@
+{
+  "id": "959cc6d1-906f-4a0e-8b61-da76f7a9dafd",
+  "input": {
+    "memoryOptions": {
+      "minConfidence": 0.5,
+      "similarityThreshold": 0
+    },
+    "query": "What do I know?",
+    "identityId": "489939dd-7d7e-441a-8e59-6691cdae2296"
+  },
+  "output": {
+    "decision": {
+      "blocked": false,
+      "matchedPatternCount": 0,
+      "retrievedMemoryCount": 1
+    },
+    "durationMs": 1,
+    "input": {
+      "memoryOptions": {
+        "minConfidence": 0.5,
+        "similarityThreshold": 0
+      },
+      "query": "What do I know?",
+      "identityId": "489939dd-7d7e-441a-8e59-6691cdae2296"
+    },
+    "stateAfter": {
+      "failures": [],
+      "identity": {
+        "createdAt": "2026-01-05T11:47:13.758Z",
+        "id": "489939dd-7d7e-441a-8e59-6691cdae2296",
+        "invariants": [],
+        "name": "DecayExample",
+        "riskPosture": "moderate",
+        "styleConstraints": [],
+        "updatedAt": "2026-01-05T11:47:13.758Z",
+        "values": [],
+        "version": 1
+      },
+      "memories": [
+        {
+          "confidence": 0.1,
+          "content": "Outdated legacy pattern deprecated",
+          "createdAt": "2026-01-05T11:47:13.758Z",
+          "decayFactor": 1,
+          "id": "c1eaa8fb-4983-4730-9895-11c9962d1f70",
+          "lastDecayAt": "2026-01-05T11:47:13.758Z",
+          "lastReinforcedAt": "2026-01-05T11:47:13.758Z",
+          "reinforcementCount": 0,
+          "tags": [
+            "weak"
+          ],
+          "type": "lesson"
+        },
+        {
+          "confidence": 0.9,
+          "content": "Always validate user input before processing",
+          "createdAt": "2026-01-05T11:47:13.758Z",
+          "decayFactor": 1,
+          "id": "c026d83d-655d-4205-a3df-f6aa04f87321",
+          "lastDecayAt": "2026-01-05T11:47:13.758Z",
+          "lastReinforcedAt": "2026-01-05T11:47:13.758Z",
+          "reinforcementCount": 0,
+          "tags": [
+            "strong"
+          ],
+          "type": "lesson"
+        }
+      ],
+      "timestamp": "2026-01-05T11:47:13.759Z"
+    },
+    "stateBefore": {
+      "failures": [],
+      "identity": {
+        "createdAt": "2026-01-05T11:47:13.758Z",
+        "id": "489939dd-7d7e-441a-8e59-6691cdae2296",
+        "invariants": [],
+        "name": "DecayExample",
+        "riskPosture": "moderate",
+        "styleConstraints": [],
+        "updatedAt": "2026-01-05T11:47:13.758Z",
+        "values": [],
+        "version": 1
+      },
+      "memories": [
+        {
+          "confidence": 0.1,
+          "content": "Outdated legacy pattern deprecated",
+          "createdAt": "2026-01-05T11:47:13.758Z",
+          "decayFactor": 1,
+          "id": "c1eaa8fb-4983-4730-9895-11c9962d1f70",
+          "lastDecayAt": "2026-01-05T11:47:13.758Z",
+          "lastReinforcedAt": "2026-01-05T11:47:13.758Z",
+          "reinforcementCount": 0,
+          "tags": [
+            "weak"
+          ],
+          "type": "lesson"
+        },
+        {
+          "confidence": 0.9,
+          "content": "Always validate user input before processing",
+          "createdAt": "2026-01-05T11:47:13.758Z",
+          "decayFactor": 1,
+          "id": "c026d83d-655d-4205-a3df-f6aa04f87321",
+          "lastDecayAt": "2026-01-05T11:47:13.758Z",
+          "lastReinforcedAt": "2026-01-05T11:47:13.758Z",
+          "reinforcementCount": 0,
+          "tags": [
+            "strong"
+          ],
+          "type": "lesson"
+        }
+      ],
+      "timestamp": "2026-01-05T11:47:13.758Z"
+    },
+    "success": true
+  },
+  "stateBefore": {
+    "failures": [],
+    "identity": {
+      "createdAt": "2026-01-05T11:47:13.758Z",
+      "id": "489939dd-7d7e-441a-8e59-6691cdae2296",
+      "invariants": [],
+      "name": "DecayExample",
+      "riskPosture": "moderate",
+      "styleConstraints": [],
+      "updatedAt": "2026-01-05T11:47:13.758Z",
+      "values": [],
+      "version": 1
+    },
+    "memories": [
+      {
+        "confidence": 0.1,
+        "content": "Outdated legacy pattern deprecated",
+        "createdAt": "2026-01-05T11:47:13.758Z",
+        "decayFactor": 1,
+        "id": "c1eaa8fb-4983-4730-9895-11c9962d1f70",
+        "lastDecayAt": "2026-01-05T11:47:13.758Z",
+        "lastReinforcedAt": "2026-01-05T11:47:13.758Z",
+        "reinforcementCount": 0,
+        "tags": [
+          "weak"
+        ],
+        "type": "lesson"
+      },
+      {
+        "confidence": 0.9,
+        "content": "Always validate user input before processing",
+        "createdAt": "2026-01-05T11:47:13.758Z",
+        "decayFactor": 1,
+        "id": "c026d83d-655d-4205-a3df-f6aa04f87321",
+        "lastDecayAt": "2026-01-05T11:47:13.758Z",
+        "lastReinforcedAt": "2026-01-05T11:47:13.758Z",
+        "reinforcementCount": 0,
+        "tags": [
+          "strong"
+        ],
+        "type": "lesson"
+      }
+    ],
+    "timestamp": "2026-01-05T11:47:13.758Z"
+  },
+  "timestamp": "2026-01-05T11:47:13.759Z"
+}

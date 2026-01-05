@@ -10,14 +10,17 @@ export {
   Difference,
   FailureSnapshot,
   IdentitySnapshot,
+  InvariantSnapshot,
   MemorySnapshot,
   RecordedRun,
   ReplayResult,
   SandboxInputSpec,
   SandboxOutput,
   StateSnapshot,
+  StyleConstraintSnapshot,
   validateInputSpec,
   ValidationResult,
+  ValueSnapshot,
 } from './types.js';
 
 export {
@@ -36,3 +39,8 @@ export {
   loadRun,
   saveRun,
 } from './recorder.js';
+
+export {
+  restoreFromSnapshot,
+  RestorationError,
+} from './restore.js';

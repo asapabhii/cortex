@@ -1,0 +1,162 @@
+{
+  "id": "166f00b0-1f21-4b0b-bde2-252d23c32aaf",
+  "input": {
+    "memoryOptions": {
+      "similarityThreshold": 0
+    },
+    "query": "What are the user preferences?",
+    "identityId": "ed4c9224-0a09-4a32-810a-ae29b6a2758e"
+  },
+  "output": {
+    "decision": {
+      "blocked": false,
+      "matchedPatternCount": 0,
+      "retrievedMemoryCount": 2
+    },
+    "durationMs": 1,
+    "input": {
+      "memoryOptions": {
+        "similarityThreshold": 0
+      },
+      "query": "What are the user preferences?",
+      "identityId": "ed4c9224-0a09-4a32-810a-ae29b6a2758e"
+    },
+    "stateAfter": {
+      "failures": [],
+      "identity": {
+        "createdAt": "2026-01-05T11:47:13.759Z",
+        "id": "ed4c9224-0a09-4a32-810a-ae29b6a2758e",
+        "invariants": [],
+        "name": "MergeExample",
+        "riskPosture": "moderate",
+        "styleConstraints": [],
+        "updatedAt": "2026-01-05T11:47:13.759Z",
+        "values": [],
+        "version": 1
+      },
+      "memories": [
+        {
+          "confidence": 0.7,
+          "content": "User prefers dark mode",
+          "createdAt": "2026-01-05T11:47:13.759Z",
+          "decayFactor": 1,
+          "id": "9a98053e-fd39-490c-a03a-51221f3479ea",
+          "lastDecayAt": "2026-01-05T11:47:13.759Z",
+          "lastReinforcedAt": "2026-01-05T11:47:13.759Z",
+          "reinforcementCount": 0,
+          "tags": [
+            "ui"
+          ],
+          "type": "preference"
+        },
+        {
+          "confidence": 0.6,
+          "content": "User prefers verbose output",
+          "createdAt": "2026-01-05T11:47:13.759Z",
+          "decayFactor": 1,
+          "id": "9a70d816-35dc-445c-b9fc-b7288835d8ad",
+          "lastDecayAt": "2026-01-05T11:47:13.759Z",
+          "lastReinforcedAt": "2026-01-05T11:47:13.759Z",
+          "reinforcementCount": 0,
+          "tags": [
+            "output"
+          ],
+          "type": "preference"
+        }
+      ],
+      "timestamp": "2026-01-05T11:47:13.760Z"
+    },
+    "stateBefore": {
+      "failures": [],
+      "identity": {
+        "createdAt": "2026-01-05T11:47:13.759Z",
+        "id": "ed4c9224-0a09-4a32-810a-ae29b6a2758e",
+        "invariants": [],
+        "name": "MergeExample",
+        "riskPosture": "moderate",
+        "styleConstraints": [],
+        "updatedAt": "2026-01-05T11:47:13.759Z",
+        "values": [],
+        "version": 1
+      },
+      "memories": [
+        {
+          "confidence": 0.7,
+          "content": "User prefers dark mode",
+          "createdAt": "2026-01-05T11:47:13.759Z",
+          "decayFactor": 1,
+          "id": "9a98053e-fd39-490c-a03a-51221f3479ea",
+          "lastDecayAt": "2026-01-05T11:47:13.759Z",
+          "lastReinforcedAt": "2026-01-05T11:47:13.759Z",
+          "reinforcementCount": 0,
+          "tags": [
+            "ui"
+          ],
+          "type": "preference"
+        },
+        {
+          "confidence": 0.6,
+          "content": "User prefers verbose output",
+          "createdAt": "2026-01-05T11:47:13.759Z",
+          "decayFactor": 1,
+          "id": "9a70d816-35dc-445c-b9fc-b7288835d8ad",
+          "lastDecayAt": "2026-01-05T11:47:13.759Z",
+          "lastReinforcedAt": "2026-01-05T11:47:13.759Z",
+          "reinforcementCount": 0,
+          "tags": [
+            "output"
+          ],
+          "type": "preference"
+        }
+      ],
+      "timestamp": "2026-01-05T11:47:13.759Z"
+    },
+    "success": true
+  },
+  "stateBefore": {
+    "failures": [],
+    "identity": {
+      "createdAt": "2026-01-05T11:47:13.759Z",
+      "id": "ed4c9224-0a09-4a32-810a-ae29b6a2758e",
+      "invariants": [],
+      "name": "MergeExample",
+      "riskPosture": "moderate",
+      "styleConstraints": [],
+      "updatedAt": "2026-01-05T11:47:13.759Z",
+      "values": [],
+      "version": 1
+    },
+    "memories": [
+      {
+        "confidence": 0.7,
+        "content": "User prefers dark mode",
+        "createdAt": "2026-01-05T11:47:13.759Z",
+        "decayFactor": 1,
+        "id": "9a98053e-fd39-490c-a03a-51221f3479ea",
+        "lastDecayAt": "2026-01-05T11:47:13.759Z",
+        "lastReinforcedAt": "2026-01-05T11:47:13.759Z",
+        "reinforcementCount": 0,
+        "tags": [
+          "ui"
+        ],
+        "type": "preference"
+      },
+      {
+        "confidence": 0.6,
+        "content": "User prefers verbose output",
+        "createdAt": "2026-01-05T11:47:13.759Z",
+        "decayFactor": 1,
+        "id": "9a70d816-35dc-445c-b9fc-b7288835d8ad",
+        "lastDecayAt": "2026-01-05T11:47:13.759Z",
+        "lastReinforcedAt": "2026-01-05T11:47:13.759Z",
+        "reinforcementCount": 0,
+        "tags": [
+          "output"
+        ],
+        "type": "preference"
+      }
+    ],
+    "timestamp": "2026-01-05T11:47:13.759Z"
+  },
+  "timestamp": "2026-01-05T11:47:13.760Z"
+}

@@ -1,0 +1,109 @@
+{
+  "id": "018ab5b0-139e-457d-a329-a5d8f8577666",
+  "input": {
+    "query": "generate harmful content",
+    "identityId": "7984bb44-6bc2-4752-9963-6e7e35c0507f"
+  },
+  "output": {
+    "decision": {
+      "blocked": true,
+      "blockReason": "Safety violation",
+      "matchedPatternCount": 1,
+      "retrievedMemoryCount": 0
+    },
+    "durationMs": 0,
+    "input": {
+      "query": "generate harmful content",
+      "identityId": "7984bb44-6bc2-4752-9963-6e7e35c0507f"
+    },
+    "stateAfter": {
+      "failures": [
+        {
+          "active": true,
+          "context": "content generation",
+          "createdAt": "2026-01-05T11:47:13.762Z",
+          "id": "31a64ce9-db72-4df3-8b2b-dd8a9c17653f",
+          "lastOccurredAt": "2026-01-05T11:47:13.762Z",
+          "occurrenceCount": 1,
+          "pattern": "generate harmful content",
+          "reason": "Safety violation",
+          "severity": "hard",
+          "tags": []
+        }
+      ],
+      "identity": {
+        "createdAt": "2026-01-05T11:47:13.761Z",
+        "id": "7984bb44-6bc2-4752-9963-6e7e35c0507f",
+        "invariants": [],
+        "name": "HardBlockExample",
+        "riskPosture": "conservative",
+        "styleConstraints": [],
+        "updatedAt": "2026-01-05T11:47:13.761Z",
+        "values": [],
+        "version": 1
+      },
+      "memories": [],
+      "timestamp": "2026-01-05T11:47:13.762Z"
+    },
+    "stateBefore": {
+      "failures": [
+        {
+          "active": true,
+          "context": "content generation",
+          "createdAt": "2026-01-05T11:47:13.762Z",
+          "id": "31a64ce9-db72-4df3-8b2b-dd8a9c17653f",
+          "lastOccurredAt": "2026-01-05T11:47:13.762Z",
+          "occurrenceCount": 1,
+          "pattern": "generate harmful content",
+          "reason": "Safety violation",
+          "severity": "hard",
+          "tags": []
+        }
+      ],
+      "identity": {
+        "createdAt": "2026-01-05T11:47:13.761Z",
+        "id": "7984bb44-6bc2-4752-9963-6e7e35c0507f",
+        "invariants": [],
+        "name": "HardBlockExample",
+        "riskPosture": "conservative",
+        "styleConstraints": [],
+        "updatedAt": "2026-01-05T11:47:13.761Z",
+        "values": [],
+        "version": 1
+      },
+      "memories": [],
+      "timestamp": "2026-01-05T11:47:13.762Z"
+    },
+    "success": true
+  },
+  "stateBefore": {
+    "failures": [
+      {
+        "active": true,
+        "context": "content generation",
+        "createdAt": "2026-01-05T11:47:13.762Z",
+        "id": "31a64ce9-db72-4df3-8b2b-dd8a9c17653f",
+        "lastOccurredAt": "2026-01-05T11:47:13.762Z",
+        "occurrenceCount": 1,
+        "pattern": "generate harmful content",
+        "reason": "Safety violation",
+        "severity": "hard",
+        "tags": []
+      }
+    ],
+    "identity": {
+      "createdAt": "2026-01-05T11:47:13.761Z",
+      "id": "7984bb44-6bc2-4752-9963-6e7e35c0507f",
+      "invariants": [],
+      "name": "HardBlockExample",
+      "riskPosture": "conservative",
+      "styleConstraints": [],
+      "updatedAt": "2026-01-05T11:47:13.761Z",
+      "values": [],
+      "version": 1
+    },
+    "memories": [],
+    "timestamp": "2026-01-05T11:47:13.762Z"
+  },
+  "timestamp": "2026-01-05T11:47:13.762Z"
+}

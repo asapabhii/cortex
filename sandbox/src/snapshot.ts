@@ -17,6 +17,7 @@ import {
  * Capture identity state as a snapshot
  *
  * Returns null if identity does not exist.
+ * Captures full data required for deterministic restoration.
  */
 export async function captureIdentitySnapshot(
   cortex: Cortex,
@@ -29,18 +30,37 @@ export async function captureIdentitySnapshot(
   }
 
   return {
+    createdAt: identity.createdAt,
+    description: identity.description,
     id: identity.id,
-    invariantsCount: identity.invariants.length,
+    invariants: identity.invariants.map((inv) => ({
+      description: inv.description,
+      id: inv.id,
+      rationale: inv.rationale,
+      rule: inv.rule,
+    })),
     name: identity.name,
     riskPosture: identity.riskPosture,
-    styleConstraintsCount: identity.styleConstraints.length,
-    valuesCount: identity.values.length,
+    styleConstraints: identity.styleConstraints.map((sc) => ({
+      aspect: sc.aspect,
+      constraint: sc.constraint,
+      id: sc.id,
+    })),
+    updatedAt: identity.updatedAt,
+    values: identity.values.map((v) => ({
+      description: v.description,
+      id: v.id,
+      name: v.name,
+      priority: v.priority,
+    })),
     version: identity.version,
   };
 }
 
 /**
  * Capture all distilled memories as snapshots
+ *
+ * Captures full data required for deterministic restoration.
  */
 export async function captureMemorySnapshots(
   cortex: Cortex
@@ -50,15 +70,22 @@ export async function captureMemorySnapshots(
   return result.memories.map((memory) => ({
     confidence: memory.confidence,
     content: memory.content,
+    createdAt: memory.createdAt,
     decayFactor: memory.decayFactor,
     id: memory.id,
+    lastDecayAt: memory.lastDecayAt,
+    lastReinforcedAt: memory.lastReinforcedAt,
     reinforcementCount: memory.reinforcementCount,
+    sourceContext: memory.sourceContext,
+    tags: [...memory.tags],
     type: memory.type,
   }));
 }
 
 /**
  * Capture all failure patterns as snapshots
+ *
+ * Captures full data required for deterministic restoration.
  */
 export async function captureFailureSnapshots(
   cortex: Cortex
@@ -67,10 +94,15 @@ export async function captureFailureSnapshots(
 
   return patterns.map((pattern) => ({
     active: pattern.active,
+    context: pattern.context,
+    createdAt: pattern.createdAt,
     id: pattern.id,
+    lastOccurredAt: pattern.lastOccurredAt,
     occurrenceCount: pattern.occurrenceCount,
     pattern: pattern.pattern,
+    reason: pattern.reason,
     severity: pattern.severity,
+    tags: [...pattern.tags],
   }));
 }
 

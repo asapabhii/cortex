@@ -1,0 +1,120 @@
+{
+  "id": "9c92f2c7-82a4-4b05-ac90-ead896847e02",
+  "input": {
+    "memoryOptions": {
+      "similarityThreshold": 0
+    },
+    "query": "How should I handle user input?",
+    "identityId": "a1c3ad51-1fb3-4234-b5b7-c43d57e83dce"
+  },
+  "output": {
+    "decision": {
+      "blocked": false,
+      "matchedPatternCount": 0,
+      "retrievedMemoryCount": 1
+    },
+    "durationMs": 0,
+    "input": {
+      "memoryOptions": {
+        "similarityThreshold": 0
+      },
+      "query": "How should I handle user input?",
+      "identityId": "a1c3ad51-1fb3-4234-b5b7-c43d57e83dce"
+    },
+    "stateAfter": {
+      "failures": [],
+      "identity": {
+        "createdAt": "2026-01-05T11:47:13.757Z",
+        "id": "a1c3ad51-1fb3-4234-b5b7-c43d57e83dce",
+        "invariants": [],
+        "name": "ReinforcementExample",
+        "riskPosture": "moderate",
+        "styleConstraints": [],
+        "updatedAt": "2026-01-05T11:47:13.757Z",
+        "values": [],
+        "version": 1
+      },
+      "memories": [
+        {
+          "confidence": 0.8,
+          "content": "Always validate user input",
+          "createdAt": "2026-01-05T11:47:13.757Z",
+          "decayFactor": 1,
+          "id": "9ad9c95a-7c76-4406-9c30-03ac978fb104",
+          "lastDecayAt": "2026-01-05T11:47:13.757Z",
+          "lastReinforcedAt": "2026-01-05T11:47:13.757Z",
+          "reinforcementCount": 0,
+          "tags": [
+            "security"
+          ],
+          "type": "lesson"
+        }
+      ],
+      "timestamp": "2026-01-05T11:47:13.757Z"
+    },
+    "stateBefore": {
+      "failures": [],
+      "identity": {
+        "createdAt": "2026-01-05T11:47:13.757Z",
+        "id": "a1c3ad51-1fb3-4234-b5b7-c43d57e83dce",
+        "invariants": [],
+        "name": "ReinforcementExample",
+        "riskPosture": "moderate",
+        "styleConstraints": [],
+        "updatedAt": "2026-01-05T11:47:13.757Z",
+        "values": [],
+        "version": 1
+      },
+      "memories": [
+        {
+          "confidence": 0.8,
+          "content": "Always validate user input",
+          "createdAt": "2026-01-05T11:47:13.757Z",
+          "decayFactor": 1,
+          "id": "9ad9c95a-7c76-4406-9c30-03ac978fb104",
+          "lastDecayAt": "2026-01-05T11:47:13.757Z",
+          "lastReinforcedAt": "2026-01-05T11:47:13.757Z",
+          "reinforcementCount": 0,
+          "tags": [
+            "security"
+          ],
+          "type": "lesson"
+        }
+      ],
+      "timestamp": "2026-01-05T11:47:13.757Z"
+    },
+    "success": true
+  },
+  "stateBefore": {
+    "failures": [],
+    "identity": {
+      "createdAt": "2026-01-05T11:47:13.757Z",
+      "id": "a1c3ad51-1fb3-4234-b5b7-c43d57e83dce",
+      "invariants": [],
+      "name": "ReinforcementExample",
+      "riskPosture": "moderate",
+      "styleConstraints": [],
+      "updatedAt": "2026-01-05T11:47:13.757Z",
+      "values": [],
+      "version": 1
+    },
+    "memories": [
+      {
+        "confidence": 0.8,
+        "content": "Always validate user input",
+        "createdAt": "2026-01-05T11:47:13.757Z",
+        "decayFactor": 1,
+        "id": "9ad9c95a-7c76-4406-9c30-03ac978fb104",
+        "lastDecayAt": "2026-01-05T11:47:13.757Z",
+        "lastReinforcedAt": "2026-01-05T11:47:13.757Z",
+        "reinforcementCount": 0,
+        "tags": [
+          "security"
+        ],
+        "type": "lesson"
+      }
+    ],
+    "timestamp": "2026-01-05T11:47:13.757Z"
+  },
+  "timestamp": "2026-01-05T11:47:13.757Z"
+}

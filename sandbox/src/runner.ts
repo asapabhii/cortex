@@ -23,8 +23,14 @@ import {
 export class SandboxRunner {
   private cortex: Cortex;
 
-  constructor() {
-    this.cortex = Cortex.create();
+  /**
+   * Create a sandbox runner
+   *
+   * @param cortex - Optional pre-configured Cortex instance for deterministic replay.
+   *                 If not provided, creates a fresh in-memory instance.
+   */
+  constructor(cortex?: Cortex) {
+    this.cortex = cortex ?? Cortex.create();
   }
 
   /**

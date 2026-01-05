@@ -1,0 +1,8 @@
+{
+  "memoryOptions": {
+    "minConfidence": 0.5,
+    "similarityThreshold": 0
+  },
+  "query": "What do I know?",
+  "identityId": "489939dd-7d7e-441a-8e59-6691cdae2296"
+}

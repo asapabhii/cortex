@@ -1,0 +1,148 @@
+{
+  "id": "6461f7ec-cc05-44ea-815c-b94bcc381dde",
+  "input": {
+    "query": "blocked query",
+    "identityId": "c5735dc5-87f3-4eab-8f0f-fc7d731371f1"
+  },
+  "output": {
+    "decision": {
+      "blocked": true,
+      "blockReason": "Test block",
+      "matchedPatternCount": 1,
+      "retrievedMemoryCount": 0
+    },
+    "durationMs": 0,
+    "input": {
+      "query": "blocked query",
+      "identityId": "c5735dc5-87f3-4eab-8f0f-fc7d731371f1"
+    },
+    "stateAfter": {
+      "failures": [
+        {
+          "active": true,
+          "context": "test",
+          "createdAt": "2026-01-05T11:47:13.765Z",
+          "id": "5a713823-2cfc-4c26-bbe3-b570d90af3a8",
+          "lastOccurredAt": "2026-01-05T11:47:13.765Z",
+          "occurrenceCount": 1,
+          "pattern": "blocked query",
+          "reason": "Test block",
+          "severity": "hard",
+          "tags": []
+        }
+      ],
+      "identity": {
+        "createdAt": "2026-01-05T11:47:13.765Z",
+        "id": "c5735dc5-87f3-4eab-8f0f-fc7d731371f1",
+        "invariants": [],
+        "name": "ShortCircuitExample",
+        "riskPosture": "conservative",
+        "styleConstraints": [],
+        "updatedAt": "2026-01-05T11:47:13.765Z",
+        "values": [],
+        "version": 1
+      },
+      "memories": [
+        {
+          "confidence": 0.9,
+          "content": "This memory should not be retrieved",
+          "createdAt": "2026-01-05T11:47:13.765Z",
+          "decayFactor": 1,
+          "id": "7723822b-d61d-4168-83dc-dcfdf41f9b02",
+          "lastDecayAt": "2026-01-05T11:47:13.765Z",
+          "lastReinforcedAt": "2026-01-05T11:47:13.765Z",
+          "reinforcementCount": 0,
+          "tags": [],
+          "type": "lesson"
+        }
+      ],
+      "timestamp": "2026-01-05T11:47:13.765Z"
+    },
+    "stateBefore": {
+      "failures": [
+        {
+          "active": true,
+          "context": "test",
+          "createdAt": "2026-01-05T11:47:13.765Z",
+          "id": "5a713823-2cfc-4c26-bbe3-b570d90af3a8",
+          "lastOccurredAt": "2026-01-05T11:47:13.765Z",
+          "occurrenceCount": 1,
+          "pattern": "blocked query",
+          "reason": "Test block",
+          "severity": "hard",
+          "tags": []
+        }
+      ],
+      "identity": {
+        "createdAt": "2026-01-05T11:47:13.765Z",
+        "id": "c5735dc5-87f3-4eab-8f0f-fc7d731371f1",
+        "invariants": [],
+        "name": "ShortCircuitExample",
+        "riskPosture": "conservative",
+        "styleConstraints": [],
+        "updatedAt": "2026-01-05T11:47:13.765Z",
+        "values": [],
+        "version": 1
+      },
+      "memories": [
+        {
+          "confidence": 0.9,
+          "content": "This memory should not be retrieved",
+          "createdAt": "2026-01-05T11:47:13.765Z",
+          "decayFactor": 1,
+          "id": "7723822b-d61d-4168-83dc-dcfdf41f9b02",
+          "lastDecayAt": "2026-01-05T11:47:13.765Z",
+          "lastReinforcedAt": "2026-01-05T11:47:13.765Z",
+          "reinforcementCount": 0,
+          "tags": [],
+          "type": "lesson"
+        }
+      ],
+      "timestamp": "2026-01-05T11:47:13.765Z"
+    },
+    "success": true
+  },
+  "stateBefore": {
+    "failures": [
+      {
+        "active": true,
+        "context": "test",
+        "createdAt": "2026-01-05T11:47:13.765Z",
+        "id": "5a713823-2cfc-4c26-bbe3-b570d90af3a8",
+        "lastOccurredAt": "2026-01-05T11:47:13.765Z",
+        "occurrenceCount": 1,
+        "pattern": "blocked query",
+        "reason": "Test block",
+        "severity": "hard",
+        "tags": []
+      }
+    ],
+    "identity": {
+      "createdAt": "2026-01-05T11:47:13.765Z",
+      "id": "c5735dc5-87f3-4eab-8f0f-fc7d731371f1",
+      "invariants": [],
+      "name": "ShortCircuitExample",
+      "riskPosture": "conservative",
+      "styleConstraints": [],
+      "updatedAt": "2026-01-05T11:47:13.765Z",
+      "values": [],
+      "version": 1
+    },
+    "memories": [
+      {
+        "confidence": 0.9,
+        "content": "This memory should not be retrieved",
+        "createdAt": "2026-01-05T11:47:13.765Z",
+        "decayFactor": 1,
+        "id": "7723822b-d61d-4168-83dc-dcfdf41f9b02",
+        "lastDecayAt": "2026-01-05T11:47:13.765Z",
+        "lastReinforcedAt": "2026-01-05T11:47:13.765Z",
+        "reinforcementCount": 0,
+        "tags": [],
+        "type": "lesson"
+      }
+    ],
+    "timestamp": "2026-01-05T11:47:13.765Z"
+  },
+  "timestamp": "2026-01-05T11:47:13.765Z"
+}

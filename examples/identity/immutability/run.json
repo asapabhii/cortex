@@ -1,0 +1,129 @@
+{
+  "id": "a4b61a55-1440-489c-baea-83b00c894dd5",
+  "input": {
+    "query": "What is the capital of France?",
+    "identityId": "995d1b7a-3563-4c69-b77b-717f7610f16c"
+  },
+  "output": {
+    "decision": {
+      "blocked": false,
+      "matchedPatternCount": 0,
+      "retrievedMemoryCount": 0
+    },
+    "durationMs": 1,
+    "input": {
+      "query": "What is the capital of France?",
+      "identityId": "995d1b7a-3563-4c69-b77b-717f7610f16c"
+    },
+    "stateAfter": {
+      "failures": [],
+      "identity": {
+        "createdAt": "2026-01-05T11:47:13.752Z",
+        "id": "995d1b7a-3563-4c69-b77b-717f7610f16c",
+        "invariants": [
+          {
+            "description": "Never lie",
+            "id": "2b22d082-3bab-4f63-8a22-44448784abb8",
+            "rationale": "Trust is fundamental",
+            "rule": "no-deception"
+          }
+        ],
+        "name": "ImmutabilityExample",
+        "riskPosture": "conservative",
+        "styleConstraints": [
+          {
+            "aspect": "tone",
+            "constraint": "professional",
+            "id": "c5518a92-69d8-4fb2-9614-9c67f355d04b"
+          }
+        ],
+        "updatedAt": "2026-01-05T11:47:13.752Z",
+        "values": [
+          {
+            "description": "Prioritize correctness",
+            "id": "cfbfe9c6-e196-4c83-bbfe-3f9a870f5872",
+            "name": "accuracy",
+            "priority": 1
+          }
+        ],
+        "version": 1
+      },
+      "memories": [],
+      "timestamp": "2026-01-05T11:47:13.754Z"
+    },
+    "stateBefore": {
+      "failures": [],
+      "identity": {
+        "createdAt": "2026-01-05T11:47:13.752Z",
+        "id": "995d1b7a-3563-4c69-b77b-717f7610f16c",
+        "invariants": [
+          {
+            "description": "Never lie",
+            "id": "2b22d082-3bab-4f63-8a22-44448784abb8",
+            "rationale": "Trust is fundamental",
+            "rule": "no-deception"
+          }
+        ],
+        "name": "ImmutabilityExample",
+        "riskPosture": "conservative",
+        "styleConstraints": [
+          {
+            "aspect": "tone",
+            "constraint": "professional",
+            "id": "c5518a92-69d8-4fb2-9614-9c67f355d04b"
+          }
+        ],
+        "updatedAt": "2026-01-05T11:47:13.752Z",
+        "values": [
+          {
+            "description": "Prioritize correctness",
+            "id": "cfbfe9c6-e196-4c83-bbfe-3f9a870f5872",
+            "name": "accuracy",
+            "priority": 1
+          }
+        ],
+        "version": 1
+      },
+      "memories": [],
+      "timestamp": "2026-01-05T11:47:13.754Z"
+    },
+    "success": true
+  },
+  "stateBefore": {
+    "failures": [],
+    "identity": {
+      "createdAt": "2026-01-05T11:47:13.752Z",
+      "id": "995d1b7a-3563-4c69-b77b-717f7610f16c",
+      "invariants": [
+        {
+          "description": "Never lie",
+          "id": "2b22d082-3bab-4f63-8a22-44448784abb8",
+          "rationale": "Trust is fundamental",
+          "rule": "no-deception"
+        }
+      ],
+      "name": "ImmutabilityExample",
+      "riskPosture": "conservative",
+      "styleConstraints": [
+        {
+          "aspect": "tone",
+          "constraint": "professional",
+          "id": "c5518a92-69d8-4fb2-9614-9c67f355d04b"
+        }
+      ],
+      "updatedAt": "2026-01-05T11:47:13.752Z",
+      "values": [
+        {
+          "description": "Prioritize correctness",
+          "id": "cfbfe9c6-e196-4c83-bbfe-3f9a870f5872",
+          "name": "accuracy",
+          "priority": 1
+        }
+      ],
+      "version": 1
+    },
+    "memories": [],
+    "timestamp": "2026-01-05T11:47:13.754Z"
+  },
+  "timestamp": "2026-01-05T11:47:13.755Z"
+}
